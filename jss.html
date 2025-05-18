@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tagesschrift&display=swap" rel="stylesheet">
+  <title>Contoh Event</title>
+  <style>
+    * {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .tengahan {
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .kotak {
+      box-shadow: 5px 5px 10px rgb(193, 189, 189);
+      width: 400px;
+      border-radius: 10px;
+
+    }
+    .isian {
+      padding: 4px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .skor {
+      display: flex;
+      gap: 110px;
+      justify-content: center;
+    }
+
+    .isian h2 {
+      color: white;
+      text-shadow: 1px 2px 2px rgb(22, 22, 22);
+      font-style: italic;
+    }
+
+    .skor h2 {
+      color: white;
+      text-shadow: 1px 2px 2px black;
+      font-style: italic;
+    }
+      .teamAB{
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+        color: rgb(0, 0, 0);
+        text-shadow: 1px 1px 2px black;
+      }
+    
+    .button button {
+      margin-top: 10px;
+      border: 3px solid;
+      border-radius:3px  ;
+      width: 130.5px;
+      height: 50px;
+    }
+
+    .button button:nth-child(1) {
+      background-color: rgb(235, 221, 244);
+    }
+
+    .button button:nth-child(2) {
+      background-color: rgb(119, 80, 144);
+    }
+
+    .button button:nth-child(3) {
+      background-color: rgb(255, 0, 0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tengahan">
+    <div class="kotak">
+      <div class="kotakan-img">
+        <img src="http://thumbs.dreamstime.com/b/%D0%BF%D0%B5%D1%87%D0%B0%D1%82%D1%8C-237524803.jpg" alt=""
+          style="height: 300px; width: 400px; ">
+      </div>
+      <div class="teamAB">
+        <h1>A</h1>
+        <h1>B</h1>
+      </div>
+      <div class="isian">
+        <h2 id="1h2">Team A</h2>
+        <h2 id="2h2">Team B</h2>
+      </div>
+      <div class="skor">
+        <h2 id="skor1">0</h2>
+        <h2 id="skor2">0</h2>
+      </div>
+      <div class="button">
+        <button id="p1">+P1</button>
+        <button id="p2">+P2</button>
+        <button id="reset">RESET</button>
+      </div>
+    </div>
+
+  </div>
+  <h1 id="h1" style="display: none; text-align: center;"></h1>
+
+
+  <script>
+    var p1 = document.getElementById('p1')
+    var p2 = document.getElementById('p2')
+    var skorEL1 = document.getElementById('skor1')
+    var skorEL2 = document.getElementById("skor2")
+    var reset = document.getElementById('reset')
+    var h1 = document.getElementById("h1")
+    var h2pertama = document.getElementById('1h2')
+    var h2kedua = document.getElementById('2h2')
+    var skor1 = 0
+    var skor2 = 0
+    var maksimalskor = 3
+
+    p1.addEventListener('click', function () {
+      if (skor1 < maksimalskor) {
+        skor1++
+        skorEL1.innerText = skor1
+        if (skor1 == maksimalskor) {
+          skorEL1.style.color = "green"
+          skorEL2.style.color = "red"
+          h1.style.display = "block"
+          h1.innerText = "Team A Won!!" 
+          if (skor1 == maksimalskor) {
+            skorEL2.innerText = skor2
+          }
+        }
+      }
+
+    })
+    p2.addEventListener('click', function () {
+      if (skor2 < maksimalskor) {
+        skor2++
+        skorEL2.innerText = skor2
+        if (skor2 == maksimalskor) {
+          skorEL2.style.color = "green"
+          skorEL1.style.color = "red"
+          h1.style.display = "block"
+          h1.innerText = "Team B Won!!"
+          if (skor2 == maksimalskor) {
+            skorEL1.innerText = skor1
+          }
+        }
+      }
+
+    })
+    reset.addEventListener('click', function () {
+      skor1 = 0
+      skor2 = 0
+      skorEL1.innerText = skor1
+      skorEL2.innerText = skor2
+      skorEL1.style.color = ""
+      skorEL2.style.color = ""
+      h1.style.display = 'none';
+
+
+    })
+    h2pertama.addEventListener('click',function () {
+      var ubah = prompt("Masukan nama club :")
+      h2pertama.innerText = ubah
+      if (ubah == null || ubah == "") {
+        h2pertama.innerText ="TEAM A"
+  
+        
+      }
+
+    })
+    h2kedua.addEventListener('click',function () {
+      var ubah = prompt("Masukan nama club :")
+      h2kedua.innerText = ubah
+      if (ubah == null || ubah == "") {
+        h2kedua.innerText ="TEAM B"
+      }
+    })
+    
+
+  </script>
+</body>
+
+</html>
